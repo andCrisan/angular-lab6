@@ -1,0 +1,105 @@
+.todo-item{
+    display: flex; //by default pe setat: "flex-direction: row", deci nu trebuie se setat
+    align-items: center; //center marking la text.
+    
+    position: relative;
+
+    cursor: pointer; //only over the "todo-item" box/div
+    padding: 35 15px;
+    
+    background-color: azure;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f2f3f5;
+    
+    &.completed {
+        color: #aaa;
+    }
+}
+.todo-item .check-box{ //doua taguri multiple luate odata
+    display: flex;
+
+    flex-shrink: 0; //remediaza caseta marcare deformata -> problema itnalnita dupa ce am adaugat loreipsum text
+    
+    border: 2px solid #eeee;
+    border-radius: 50%; //---> e oval, trebuie setata width/height egal
+    width: 28px;
+    height: 28px;
+
+    transition: background-color 0.2s, border-color 0.2s; //tranzitie, culoare under marking sign, border-color tranzitie culoare 
+    
+    i.material-icons{
+        margin: auto;
+        font-size: 20px;
+        color: #333;
+        //hide by default
+        opacity: 0; //0 vs 0.28, zero marking invisibil, 0.28: marking vizibil
+        transition: opacity 0.2s; //tranzitie--> marking sign | documentatie tipuri de transition?
+    }
+
+}
+.todo-item:hover .check-box {
+    background-color: #eeee;
+    i.material-icons{
+        opacity: 1;
+    }
+}
+.todo-item.completed .check-box {
+    background:rgb(5, 145, 110);
+    border-color: rgb(5, 145, 110);;
+   
+    i.material-icons{
+        opacity: 1;
+    }
+}
+
+.todo-item .todo-controls-box { //parinte (todo-item) si copil (totdo-control...) pentru a opera schimbari doar cand clasa sub parinte
+    position: absolute; //control absolut | folosesc background-color ca sa vad daca selector ok
+    bottom: 0;
+    right: 5px;
+    display: flex; //butoane pe aceeasi linie
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(2px);
+
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+}
+.todo-item:hover .todo-controls-box {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.4s; //delay afisare butoane dreapta jos
+
+    transform: translateY(0); //de citit!!DOCU! afisare de jos in sus 
+}
+.todo-controls-box .todo-control-button{
+    display: flex;
+    border-radius: 5px;
+    background-color: rgb(229, 247, 229);
+    padding: 7px 10px;
+
+    i.material-icons{
+        font-size: 17px;
+    }
+
+    &:hover {
+        background-color: rgba(156, 212, 235, 0.933);
+    }
+    &:active{ //active == ON CLICK
+        background-color: rgb(15, 180, 180);
+
+    }
+    &:first-of-type{ //primul buton, first of it's type
+        //background-color: green;
+        border-top-left-radius: 10px;
+    }
+    &:last-of-type{
+        border-top-right-radius: 10px;        
+    }
+}
+
+.todo-controls-box .todo-control-button.is-danger:hover i.material-icons{
+    color: rgb(236, 65, 65);
+}
+.todo-controls-box .todo-control-button.is-danger:active i.material-icons {
+    color: rgb(189, 37, 37);
+}

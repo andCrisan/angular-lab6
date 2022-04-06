@@ -1,0 +1,41 @@
+<section class="heading-section">
+    <h1 class="title is-1 has-text-centered">Yooyoma, fasiendoma!</h1>
+</section>
+
+<div class="container add-todo-box-container">
+    <div class="add-todo-box">
+
+        <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+            <h2 class="title is-5">New Todo</h2>
+            
+            <div class="field is-grouped" style="margin: 0">
+                <p class="control is-expanded"> <!--ngModel is form control object-->
+                  <input ngModel #todoTextField="ngModel" required minlength="2" name="text" class="input" type="text" placeholder="Type todo text here"> <!--Required validare, nu poatoe fi empty-->
+                </p>
+                <p class="control">
+                  <button class="button alt-gradient-button">
+                      <i class="material-icons">add</i> <!---"i.material-icons" shortcut, asa folosim material library cu tag I | ,,add" si se slecteaza buton provided google-->                      
+                    Add
+                  </button>
+                </p>
+              </div>
+              <div class="div" *ngIf="todoTextField.invalid && showValidationErrors"> <!--afisam mesaje eroare doar daca...-->
+                <p class="help is-danger" *ngIf="todoTextField.errors?.['required']">Please enter text-todo!</p>
+                <p class="help is-danger" *ngIf="todoTextField.errors?.['minlength']">Minimum lenght 2 char!</p>
+              </div>
+
+        </form>
+
+    </div> <!---".add-todo-box" si insereaza DIV--->
+</div>
+<section class="section">
+    <div class="container">
+
+        <div class="todos-list">
+         <app-todo-item *ngFor="let todo of todos" [todo]="todo" (todoClicked)="toggleCompleted(todo)" (editClicked)="editTodo(todo)" (deleteClicked)="deleteTodo(todo)"></app-todo-item> <!--[todo], property binding-->
+
+        </div>
+        
+    </div>
+</section>
+

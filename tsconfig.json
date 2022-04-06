@@ -7,9 +7,10 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": false, //+1
+    "noImplicitReturns": false,                   //+1 not all code returns value
+    "strictPropertyInitialization": false, //+1 pentru compilare strict                !!!! intialized
+    "noFallthroughCasesInSwitch": true, //+1 pentru compilare strict                   !!!!
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,

@@ -1,0 +1,19 @@
+<div class="todo-item" (click)="onTodoClicked()" [class.completed]="todo.completed"> <!--(click) click event - event binding to listen event?-->
+    <div class="check-box">
+        <i class="material-icons">check</i>
+    </div>
+
+    <div class="todo-text">
+        {{ todo.text }} <!---"todo variabila din ngFOR--->
+    </div>
+
+    <div class="todo-controls-box" appToolTipSingleton (click)="$event.stopPropagation()"> <!--oprim propagare eveniment ".event acces la event, apoi stopProp"-->
+        <div class="todo-control-button" appToolTip="Edit todo" (click)="onEditClicked()">
+            <i class="material-icons">edit</i>
+        </div>
+
+        <div class="todo-control-button is-danger" appToolTip="Delete todo" (click)="onDeleteClicked()">
+            <i class="material-icons">delete</i>
+        </div>
+    </div>
+</div>

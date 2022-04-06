@@ -1,0 +1,30 @@
+.heading-section{
+   background: linear-gradient(to right, rgb(6, 207, 157), rgb(53, 104, 212));
+    //background-image: url("C:/Angular/angular-todo-app/src/desen2.jpg"); !!!!!!!!REVIN AICI!
+
+    padding: 100px;
+    padding-bottom: 150px;
+    
+    h1.title{
+        font-weight: bold;
+        color: white;
+        text-shadow: 0px 1px 2px rgba(black, 0.12); //shadow pentru text
+    }
+}
+.container {
+    width: 600px;
+    max-width: 300px; //doar la resize windows se redimensioneaza
+}
+
+.add-todo-box-container{
+    position: sticky; //chenar sus, ramane top, coboara la scroll +TOP
+    top: 0;
+    z-index: 1; //nu are transparenta
+}
+.add-todo-box {
+    padding: 25px;
+    border-radius: 5px; //colturi rotunjite
+    margin-top: -68px; 
+    background: white;
+    box-shadow: 0px 4px 12px rgba($color: #535050, $alpha:0.8); //0px left and right, 4px down, 12px blur, rgba set color
+}
